@@ -12,9 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
+import cloudinary_storage
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -60,6 +58,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'bootstrap5',
     'crispy_forms',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -147,6 +146,7 @@ STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),) 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -155,10 +155,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-#cloudinary.config( 
-    #cloud_name = 'olawaledipupo',
-    #api_key = '528155979597925',
-    #api_secret = '7tTp129uL-smReV_59PanCuvIjY'
-#)
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'olawaledipupo',
+    'API_KEY': '528155979597925',
+    'API_SECRET': '7tTp129uL-smReV_59PanCuvIjY'
+}
 
-#DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
