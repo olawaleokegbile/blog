@@ -2,11 +2,10 @@ from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
-from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Post(models.Model):
-    image = CloudinaryField('image')
+    image = models.FileField(upload_to='post_image', blank=True)
     title = models.CharField(max_length=100)
     body = RichTextField(blank=True, null=True)
     created_at = models.DateTimeField(default=datetime.now, blank=True)

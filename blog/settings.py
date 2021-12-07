@@ -60,7 +60,6 @@ INSTALLED_APPS = [
     'ckeditor',
     'bootstrap5',
     'crispy_forms',
-    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -156,10 +155,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-cloudinary.config( 
-    cloud_name = 'olawaledipupo',
-    api_key = '528155979597925',
-    api_secret = '7tTp129uL-smReV_59PanCuvIjY'
-)
+#cloudinary.config( 
+    #cloud_name = 'olawaledipupo',
+    #api_key = '528155979597925',
+    #api_secret = '7tTp129uL-smReV_59PanCuvIjY'
+#)
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+#DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
