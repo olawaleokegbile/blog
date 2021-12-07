@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-(70pk1d$c&g9ek9$4@5@qouu^d1v7duava*=fsvp6fv*d^69ws'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 SERVER_EMAIL = 'olawaleokegbile@gmail.com'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -41,7 +44,7 @@ ADMINS = [
 
 MANAGERS = ADMINS
 
-ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'olawaledipupo.herokuapp.com']
 
 
 # Application definition
@@ -57,6 +60,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'bootstrap5',
     'crispy_forms',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -152,6 +156,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-#EMAIL_BACKEND = 'sendgrid_backend.SendgridBackend'
-#SENDGRID_API_KEY = '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'
-#SENDGRID_SANDBOX_MODE_IN_DEBUG = False
+cloudinary.config( 
+    cloud_name = 'olawaledipupo',
+    api_key = '528155979597925',
+    api_secret = '7tTp129uL-smReV_59PanCuvIjY'
+)
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
