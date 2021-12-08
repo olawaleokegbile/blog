@@ -1,4 +1,5 @@
 {% load static %}
+{% load cloudinary %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -79,7 +80,7 @@
         <div class="card">
           <h1 class="logo" style="color:Red; font-family:;"><b>{{post.title}}</b></h1>
           <p>{{post.created_at}}</p>
-          <img src="{{post.image.url}}" width="400" 
+          <img src="{{post_instance.image.url}}" width="400" 
           height="500" class="img-fluid" alt="Responsive image"> 
           <p>{{post.body|safe|truncatewords:90}}</p>
           <a style="text-decoration: none; color: black;" href="/post/{{post.id}}">

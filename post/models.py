@@ -1,3 +1,4 @@
+from typing_extensions import Required
 from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
@@ -24,7 +25,7 @@ class Comment(models.Model):
 
 class Contact(models.Model):
     name = models.CharField(max_length=100)
-    email = models.EmailField(max_length=70,blank=True,unique=True)
+    email = models.EmailField(max_length=100)
     message = models.TextField()
     
     def __str__(self):

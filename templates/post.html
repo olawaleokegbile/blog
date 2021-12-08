@@ -86,27 +86,31 @@
         </div>
       </div>
     </div>
-    <br/><br/>
-    
-  
+    <br/>
+     
 <!--comments-->
-    <h2>Comments</h2>
-    {% if not posts.comments.all %}
-      <p>No comments yet!</p>
-    {% endif %}
+<div class="container">
+  <div class="col-md-6">
+    <div class="page-header">
+      <h2><b><u>Comments</u></b></h2>
+      {% if not posts.comments.all %}
+        <p>No comments yet!</p>
+      {% endif %}
 
-    {% for comment in posts.comments.all %}
-      <article>
-        <strong>{{comment.name}} at {{comment.date}}</strong><br>
-        {{comment.body}}
-      </article>
-    {% endfor %}
+      {% for comment in posts.comments.all %}
+        <article>
+          <strong>{{comment.name}} at {{comment.date}}</strong><br>
+          {{comment.body}}
+        </article>
+      {% endfor %}
     </div>
+  </div>
+</div>
   <br>
-    <div class="row">
+    <div class="container">
       <div class="col-md-6">
         <div class="page-header">
-          <h2>Add a Comment</h2>
+          <h2><b><u>Add a Comment</u></b></h2>
         </div>
       <form method="POST" action="#">
         {% csrf_token %}
