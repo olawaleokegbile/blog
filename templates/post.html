@@ -92,7 +92,7 @@
 <div class="container">
   <div class="col-md-6">
     <div class="page-header">
-      <h2><b><u>Comments</u></b></h2>
+      <h2 style="color:red;"><b><u>Comments</u></b></h2>
       {% if not posts.comments.all %}
         <p>No comments yet!</p>
       {% endif %}
@@ -110,7 +110,7 @@
     <div class="container">
       <div class="col-md-6">
         <div class="page-header">
-          <h2><b><u>Add a Comment</u></b></h2>
+          <h2 style="color:red;"><b><u>Add a Comment</u></b></h2>
         </div>
       <form method="POST" action="#">
         {% csrf_token %}
