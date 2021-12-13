@@ -156,9 +156,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'olawaledipupo',
     'API_KEY': '528155979597925',
-    'API_SECRET': '7tTp129uL-smReV_59PanCuvIjY'
+    'API_SECRET': '7tTpl29uL-smReV_59PanCuvIjY',
 }
 

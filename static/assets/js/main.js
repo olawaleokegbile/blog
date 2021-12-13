@@ -19,6 +19,7 @@
     }
   }
 
+
   /**
    * Easy event listener function
    */
@@ -211,4 +212,9 @@
     }
   });
 
+
 })()
+
+  $('.reply-btn').click(function() {
+    $(this).parent().parent().next('.relied-comments').fadeToggle()
+  }); 

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from . models import Contact, Post
+from . models import Comment, Contact, Post
 from django.core.paginator import Paginator
 from .forms import CommmentForm, ContactForm
 from django.core.mail import mail_admins, send_mail, BadHeaderError
@@ -18,16 +18,26 @@ def blog(request):
 
 def post(request, pk):
     posts = Post.objects.get(id=pk)
-
+    #reply = Comment.objects.get(id=pk)
     if request.method == 'POST':
         form = CommmentForm(request.POST)
 
         if form.is_valid():
-            obj = form.save(commit=False)
-            obj.post = posts
-            obj.save()
+            parent_obj = None
+            try:
+                parent_id = int(request.POST.get('parent_id'))
+            except:
+                parent_id = None
+            if parent_id:
+                parent_obj = Comment.objects.get(id=parent_id)
+                if parent_obj:
+                    reply = form.save(commit=False)
+                    reply.parent = parent_obj
+        obj = form.save(commit=False)
+        obj.post = posts
+        obj.save()
 
-            return redirect('post', pk=posts.pk)
+        return redirect('post', pk=posts.pk)
     else:
         form = CommmentForm()
     context = {
@@ -56,3 +66,4 @@ def contact(request):
         'forms': forms
     }
     return render(request, 'contact.html', context)
+

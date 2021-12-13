@@ -31,6 +31,7 @@
   <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
   
 
+    
   <!-- =======================================================
   * Template Name: Tempo - v4.6.0
   * Template URL: https://bootstrapmade.com/tempo-free-onepage-bootstrap-theme/
@@ -80,7 +81,7 @@
         <div class="card">
           <h1 class="logo" style="color:Red;"><b>{{posts.title}}</b></h1>
           <p>{{posts.created_at}}</p>
-          <img src="{{posts.image.url}}" width="480" class="img-fluid" alt="Responsive image"><br>
+          <img src="{{posts.image.url}}" width="400" height="500" class="img-fluid" alt="Responsive image"><br>
           <p>{{posts.body|safe}}</p>
           </a>
         </div>
@@ -102,6 +103,24 @@
           <strong>{{comment.name}} at {{comment.date}}</strong><br>
           {{comment.body}}
         </article>
+          <button type="button" name="button" class="reply-btn btn btn-outline-dark btn -sn">Reply</button>
+
+        <div class="replied-comments container mt-2" style="display:none;">
+          {% for reply in comment.replies.all %}
+          <article>
+            <strong>{{reply.name}} at {{reply.date}}</strong><br>
+            {{reply.body}}
+          </article>
+          {% endfor %}
+          <div class="form-group row">
+            <form method="POST">
+              {% csrf_token %}
+              <input type="hidden" name="parent_id" value="{{comment.id}}"> 
+              {{ form|crispy }}
+                <input type="submit" value="submit" class="btn btn-outline-success">
+           </form>
+          </div>
+        </div>
       {% endfor %}
     </div>
   </div>
@@ -152,7 +171,7 @@
 
       <div class="me-md-auto text-center text-md-start">
         <div style="color:white;", class="copyright">
-          &copy; Copyright <strong><span>Olawaledipupo</span></strong>. All Rights Reserved
+          &copy; Copyright 2021 <strong><span>Olawaledipupo</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
           <!-- All the links in the footer should remain intact. -->
@@ -166,6 +185,7 @@
         <a href="https://web.facebook.com/mizta.whales" class="facebook"><i class="bx bxl-facebook"></i></a>
         <a href="https://www.instagram.com/waleokegbile/" class="instagram"><i class="bx bxl-instagram"></i></a>
         <a href="https://www.linkedin.com/in/okegbile-olawale-55a1a3196/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        <a href="https://github.com/olawaleokegbile" class="github"><i class="bx bxl-github"></i></a>
       </div>
     </div>
   </footer><!-- End Footer -->
