@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-(70pk1d$c&g9ek9$4@5@qouu^d1v7duava*=fsvp6fv*d^69ws'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 SERVER_EMAIL = 'olawaleokegbile@gmail.com'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'cloudinary_storage',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'cloudinary',
     'post',

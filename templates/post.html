@@ -59,12 +59,13 @@
       </nav><!-- .navbar -->
 
     </div>
-  </header><!-- End Header -->
+  </header><!-- End Header --><br><br/><br/><br/><br/><br/><br/><br/>
+
 
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
+    <section id="breadcrumbs" class="breadcrumbs" style="background-color:grey;">
       <div class="container">
 
         <ol>
@@ -74,26 +75,31 @@
         <h2>Blog</h2>
 
       </div>
-    </section><!-- End Breadcrumbs -->
-    
+    </section><!-- End Breadcrumbs --><br>
+  <div class="container">  
     <div class="row">
-      <div class="leftcolumn">
+      <div class="col">
         <div class="card">
-          <h1 class="logo" style="color:Red;"><b>{{posts.title}}</b></h1>
-          <p>{{posts.created_at}}</p>
-          <img src="{{posts.image.url}}" width="400" height="500" class="img-fluid" alt="Responsive image"><br>
-          <p>{{posts.body|safe}}</p>
-          </a>
+          <div class="card-body">
+            <center>
+              <h1 class="logo" style="color:Red;"><b>{{posts.title}}</b></h1>
+              <p><i><b>{{posts.created_at}}</b></i></p>
+              <img src="{{posts.image.url}}" width="300" height="400" class="img-fluid" alt="Responsive image">
+            </center>
+              <p>{{posts.body|safe}}</p>
+              </a>
+            </div>
         </div>
       </div>
     </div>
+  </div>
     <br/>
      
 <!--comments-->
 <div class="container">
   <div class="col-md-6">
     <div class="page-header">
-      <h2 style="color:red;"><b><u>Comments</u></b></h2>
+      <h2><b><u>Comments</u></b></h2>
       {% if not posts.comments.all %}
         <p>No comments yet!</p>
       {% endif %}
@@ -129,9 +135,9 @@
     <div class="container">
       <div class="col-md-6">
         <div class="page-header">
-          <h2 style="color:red;"><b><u>Add a Comment</u></b></h2>
+          <h2><b><u>Add a Comment</u></b></h2>
         </div>
-      <form method="POST" action="#">
+      <form method="POST" action="">
         {% csrf_token %}
         {{ form|crispy }}<br>
         <button class="btn btn-primary btn-block" type="submit">Comment</button>

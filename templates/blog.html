@@ -62,7 +62,7 @@
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
+    <section id="breadcrumbs" class="breadcrumbs" style="background-color:grey;">
       <div class="container">
 
         <ol>
@@ -72,23 +72,30 @@
         <h2>Blog</h2>
 
       </div>
-    </section><!-- End Breadcrumbs -->
-    
+    </section><!-- End Breadcrumbs --><br>
+  <div class="container">  
     <div class="row">
-      <div class="leftcolumn">
-        {% for post in page_num %}
+      {% for post in page_num %}
+      <div class="col-md-3">
         <div class="card">
-          <h1 class="logo" style="color:Red; font-family:;"><b>{{post.title}}</b></h1>
-          <p>{{post.created_at}}</p>
-          <img src="{{post.image.url}}" width="400" 
-          height="500" class="img-fluid" alt="Responsive image"> 
-          <p>{{post.body|safe|truncatewords:90}}</p>
+          <div class="card-body">
+            <div class="card-title">
+              <h1 class="logo" style="color:Red; font-family:;"><b>{{post.title}}</b></h1>
+            </div>
+          <p><i><b>{{post.created_at}}</b></i></p>
+          <img src="{{post.image.url}}" width="300" 
+          height="400" class="img-fluid" alt="Responsive image"> 
+          <p>{{post.body|safe|truncatewords:50}}</p>
           <a style="text-decoration: none; color: black;" href="/post/{{post.id}}">
           <b style="color:blue;">Read more&rarr;</b></a>
+          </div>
         </div>
-        {% endfor %}
       </div>
-    </div></br></br>
+      {% endfor %}
+    </div>
+  </div>
+
+  </br>
     
   <nav aria-label="...">
     <ul class="pagination">
@@ -103,7 +110,7 @@
       {% endif %}
     </ul>
   </nav>
-    
+ 
 
 
             </div><!-- End sidebar -->
